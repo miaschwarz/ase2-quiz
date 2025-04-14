@@ -65,6 +65,15 @@ function App() {
     }
   }, []);
 
+  const [theme, setTheme]= useState('light');
+
+  const toggleTheme = () =>{
+    const newTheme = theme == 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    document.documentElement.setAttribute ('data-theme', newTheme);
+  };
+
+
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({});
   const [submitted, setSubmitted] = useState(false);
@@ -98,13 +107,21 @@ function App() {
   const question = quizQuestions[currentQuestion];
 
   return (
-
+    
     <div className="app-container">
       {user && (
         <div className="user-name">
           👋 Hi, {user.name}
         </div>
       )}
+
+      <div style={{ position: 'absolute', top: '20px', right:'20px'}}>
+      <button onClick = {toggleTheme}>
+        {theme == 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}
+      </button>
+    </div>
+
+
 
       <div className="quiz-box">
         {!submitted ? (

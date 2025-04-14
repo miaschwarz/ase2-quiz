@@ -5,13 +5,18 @@ import App from './App.jsx';
 import Register from './register.jsx'; 
 import Login from './login.jsx'; 
 import './App.css';
+import { ThemeProvider } from './ThemeContext.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/login" element={<Login />} />
-    </Routes>
-  </BrowserRouter>
+  <React.StrictMode>
+    <ThemeProvider>
+        <BrowserRouter>
+          <Routes>
+              <Route path="/" element={<App />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/login" element={<Login />} />
+            </Routes>
+        </BrowserRouter>
+    </ThemeProvider>
+  </React.StrictMode>
 );

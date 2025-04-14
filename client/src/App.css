@@ -1,4 +1,29 @@
 /* App.css */
+/* Define light/ dark mode variable for the app */
+
+:root {
+  --bg-color: white;
+  --text-color: black;
+  --quiz-bg: #ffffff;
+  --quiz-border: #2a9655;
+  --button-bg: #2a9655;
+}
+
+[data-theme='dark']{
+  --bg-color: #1a1a1a;
+  --text-color: white;
+  --quiz-bg: #333;
+  --quiz-border: #555;
+  --button-bg: #444;
+}
+
+
+body{
+  background-color: var( --bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 .app-container {
   display: flex;
   justify-content: center;
@@ -19,6 +44,8 @@
   max-width: 600px;
   width: 100%;
   animation: fadeIn 0.5s ease-in-out;
+  background-color: var(--quiz-bg);
+  border: 4px solid var(--quiz-border);
 }
 
 .register-box {
@@ -61,6 +88,7 @@ button {
   font-weight: bold;
   font-size: 1rem;
   margin-top: 25px;
+  background-color: var(--button-bg);
 }
 
 button:hover {
@@ -89,5 +117,10 @@ button:hover {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.app-container {
+  min-height: 100vh;
+  padding: 2rem;
 }
 
