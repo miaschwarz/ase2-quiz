@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css'; // optional: for centering/styling
+import DarkModeToggle from './DarkModeToggle.jsx';
+import {useState, useEffect} from 'react';
 
 const quizQuestions = [
   {
@@ -57,6 +59,7 @@ const quizQuestions = [
 function App() {
 
   const [user, setUser] = useState(null);
+  const [theme, setTheme] = useState('light');
 
   useEffect(() => {
     const savedUser = localStorage.getItem('user');
@@ -65,14 +68,13 @@ function App() {
     }
   }, []);
 
-  const [theme, setTheme]= useState('light');
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
-  const toggleTheme = () =>{
-    const newTheme = theme == 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    document.documentElement.setAttribute ('data-theme', newTheme);
-  };
-
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+  }
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({});
@@ -99,6 +101,8 @@ function App() {
         score += 1;
       }
     });
+
+
     return score;
   };
 
@@ -107,21 +111,13 @@ function App() {
   const question = quizQuestions[currentQuestion];
 
   return (
-    
+
     <div className="app-container">
       {user && (
         <div className="user-name">
           👋 Hi, {user.name}
         </div>
       )}
-
-      <div style={{ position: 'absolute', top: '20px', right:'20px'}}>
-      <button onClick = {toggleTheme}>
-        {theme == 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}
-      </button>
-    </div>
-
-
 
       <div className="quiz-box">
         {!submitted ? (
