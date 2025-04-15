@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 import './App.css'; // optional: for centering/styling
 import DarkModeToggle from './DarkModeToggle.jsx';
-import {useState, useEffect} from 'react';
 
 const quizQuestions = [
   {
@@ -118,7 +117,9 @@ function App() {
           👋 Hi, {user.name}
         </div>
       )}
-
+        <div className="dark-mode-toggle-container">
+       <DarkModeToggle toggleTheme={toggleTheme} theme={theme} />
+      </div> 
       <div className="quiz-box">
         {!submitted ? (
           <>

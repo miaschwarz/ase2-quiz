@@ -24,6 +24,27 @@ body{
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.dark-mode-toggle-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1000; /* Ensure it stays on top of other elements */
+}
+
+.dark-mode-toggle-container button {
+  padding: 8px 12px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dark-mode-toggle-container button:hover {
+  background-color: var(--text-color);
+  color: var(--background-color);
+}
+
 .app-container {
   display: flex;
   justify-content: center;
