@@ -176,7 +176,7 @@ function App() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({});
   const [submitted, setSubmitted] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(10); 
+  const [timeLeft, setTimeLeft] = useState(20); 
 
   const handleQuizChange = (event) => {
     setCurrentQuiz(event.target.value);
